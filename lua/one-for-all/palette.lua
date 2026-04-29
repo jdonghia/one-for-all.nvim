@@ -1,4 +1,3 @@
--- Palette mirrors app/globals.css from jdonghia.github.io.
 return {
   eerie_black     = "#1b1b1b",
   jet             = "#2c2c2c",

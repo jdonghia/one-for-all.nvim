@@ -13,7 +13,6 @@ function M.get(p)
   local err_dim = p.auburn
 
   return {
-    -- Editor UI
     Normal        = { fg = fg, bg = bg },
     NormalFloat   = { fg = fg, bg = bg_alt },
     FloatBorder   = { fg = subtle, bg = bg_alt },
@@ -39,7 +38,6 @@ function M.get(p)
     FoldColumn    = { fg = subtle, bg = bg },
     Folded        = { fg = muted, bg = bg_alt },
 
-    -- Splits / status / tabs
     VertSplit     = { fg = bg_alt, bg = bg },
     WinSeparator  = { fg = bg_alt, bg = bg },
     StatusLine    = { fg = fg, bg = bg_alt },
@@ -50,7 +48,6 @@ function M.get(p)
     WinBar        = { fg = fg, bg = bg },
     WinBarNC      = { fg = muted, bg = bg },
 
-    -- Search / completion
     Search        = { fg = bg, bg = string_ },
     CurSearch     = { fg = bg, bg = err },
     IncSearch     = { fg = bg, bg = err },
@@ -61,7 +58,6 @@ function M.get(p)
     PmenuThumb    = { bg = subtle },
     WildMenu      = { fg = bg, bg = accent },
 
-    -- Messages
     ErrorMsg      = { fg = err, bold = true },
     WarningMsg    = { fg = string_, bold = true },
     ModeMsg       = { fg = fg, bold = true },
@@ -70,7 +66,6 @@ function M.get(p)
     MsgArea       = { fg = fg, bg = bg },
     MsgSeparator  = { fg = subtle, bg = bg },
 
-    -- Sugar-high parity (see app/globals.css on jdonghia.github.io)
     Identifier     = { fg = fg },
     Keyword        = { fg = accent },
     String         = { fg = string_ },
@@ -83,8 +78,8 @@ function M.get(p)
     Conditional    = { fg = accent },
     Repeat         = { fg = accent },
     Label          = { fg = accent },
-    Exception      = { fg = accent },
-    Include        = { fg = accent },
+    Exception      = { fg = err },
+    Include        = { fg = err },
     Define         = { fg = accent },
     Macro          = { fg = accent },
     PreProc        = { fg = accent },
@@ -100,45 +95,47 @@ function M.get(p)
     Constant       = { fg = literal },
     Number         = { fg = literal },
     Float          = { fg = literal },
-    Boolean        = { fg = literal },
+    Boolean        = { fg = err },
     Todo           = { fg = bg, bg = string_, bold = true },
     Underlined     = { fg = accent, underline = true },
     Error          = { fg = err },
 
-    -- Treesitter
     ["@variable"]            = { fg = fg },
-    ["@variable.builtin"]    = { fg = literal, italic = true },
+    ["@variable.builtin"]    = { fg = err, italic = true },
     ["@variable.parameter"]  = { fg = fg },
     ["@variable.member"]     = { fg = muted },
     ["@property"]            = { fg = muted },
     ["@field"]               = { fg = muted },
     ["@constant"]            = { fg = literal },
-    ["@constant.builtin"]    = { fg = literal, italic = true },
+    ["@constant.builtin"]    = { fg = err, italic = true },
     ["@constant.macro"]      = { fg = literal },
     ["@string"]              = { fg = string_ },
     ["@string.escape"]       = { fg = literal },
     ["@string.special"]      = { fg = literal },
     ["@character"]           = { fg = string_ },
     ["@number"]              = { fg = literal },
-    ["@boolean"]             = { fg = literal },
+    ["@boolean"]             = { fg = err },
     ["@float"]               = { fg = literal },
     ["@function"]            = { fg = fg },
     ["@function.builtin"]    = { fg = fg },
-    ["@function.call"]       = { fg = fg },
-    ["@function.macro"]      = { fg = accent },
+    ["@function.call"]       = { fg = accent },
+    ["@function.macro"]      = { fg = err },
     ["@function.method"]     = { fg = fg },
     ["@method"]              = { fg = fg },
-    ["@method.call"]         = { fg = fg },
+    ["@method.call"]         = { fg = accent },
     ["@constructor"]         = { fg = accent },
     ["@parameter"]           = { fg = fg },
     ["@keyword"]             = { fg = accent },
     ["@keyword.function"]    = { fg = accent },
     ["@keyword.operator"]    = { fg = accent },
-    ["@keyword.return"]      = { fg = accent },
-    ["@keyword.import"]      = { fg = accent },
+    ["@keyword.return"]      = { fg = err },
+    ["@keyword.import"]      = { fg = err },
+    ["@keyword.export"]      = { fg = err },
+    ["@keyword.coroutine"]   = { fg = err },
+    ["@keyword.exception"]   = { fg = err },
     ["@conditional"]         = { fg = accent },
     ["@repeat"]              = { fg = accent },
-    ["@exception"]           = { fg = accent },
+    ["@exception"]           = { fg = err },
     ["@operator"]            = { fg = subtle },
     ["@punctuation"]         = { fg = subtle },
     ["@punctuation.bracket"] = { fg = subtle },
@@ -169,12 +166,11 @@ function M.get(p)
     ["@text.strong"]         = { fg = fg, bold = true },
     ["@text.strike"]         = { fg = muted, strikethrough = true },
 
-    -- LSP semantic tokens
     ["@lsp.type.variable"]   = { fg = fg },
     ["@lsp.type.parameter"]  = { fg = fg },
     ["@lsp.type.property"]   = { fg = muted },
-    ["@lsp.type.function"]   = { fg = fg },
-    ["@lsp.type.method"]     = { fg = fg },
+    ["@lsp.type.function"]   = { fg = accent },
+    ["@lsp.type.method"]     = { fg = accent },
     ["@lsp.type.class"]      = { fg = accent },
     ["@lsp.type.type"]       = { fg = accent },
     ["@lsp.type.interface"]  = { fg = accent },
@@ -188,10 +184,13 @@ function M.get(p)
     ["@lsp.type.operator"]   = { fg = subtle },
     ["@lsp.type.macro"]      = { fg = accent },
     ["@lsp.type.decorator"]  = { fg = accent },
-    ["@lsp.typemod.variable.defaultLibrary"] = { fg = literal, italic = true },
-    ["@lsp.typemod.function.defaultLibrary"] = { fg = fg },
+    ["@lsp.typemod.variable.defaultLibrary"] = { fg = err, italic = true },
+    ["@lsp.typemod.function.defaultLibrary"] = { fg = accent },
+    ["@lsp.typemod.function.declaration"]    = { fg = fg },
+    ["@lsp.typemod.function.definition"]     = { fg = fg },
+    ["@lsp.typemod.method.declaration"]      = { fg = fg },
+    ["@lsp.typemod.method.definition"]       = { fg = fg },
 
-    -- Diagnostics
     DiagnosticError            = { fg = err },
     DiagnosticWarn             = { fg = string_ },
     DiagnosticInfo             = { fg = accent },
@@ -206,7 +205,6 @@ function M.get(p)
     DiagnosticVirtualTextInfo  = { fg = accent, bg = bg },
     DiagnosticVirtualTextHint  = { fg = muted, bg = bg },
 
-    -- Diff
     DiffAdd       = { fg = accent, bg = bg_alt },
     DiffChange    = { fg = string_, bg = bg_alt },
     DiffDelete    = { fg = err_dim, bg = bg_alt },
@@ -215,13 +213,11 @@ function M.get(p)
     ["@diff.minus"] = { fg = err },
     ["@diff.delta"] = { fg = string_ },
 
-    -- Spell
     SpellBad   = { undercurl = true, sp = err },
     SpellCap   = { undercurl = true, sp = accent },
     SpellLocal = { undercurl = true, sp = string_ },
     SpellRare  = { undercurl = true, sp = literal },
 
-    -- Git signs / fugitive
     GitSignsAdd      = { fg = accent },
     GitSignsChange   = { fg = string_ },
     GitSignsDelete   = { fg = err },
@@ -235,7 +231,6 @@ function M.get(p)
     diffRemoved      = { fg = err },
     diffChanged      = { fg = string_ },
 
-    -- Telescope
     TelescopeNormal         = { fg = fg, bg = bg_alt },
     TelescopeBorder         = { fg = subtle, bg = bg_alt },
     TelescopePromptNormal   = { fg = fg, bg = bg_alt },
@@ -251,7 +246,6 @@ function M.get(p)
     TelescopeMatching       = { fg = err, bold = true },
     TelescopePromptPrefix   = { fg = accent },
 
-    -- Snacks picker
     SnacksPicker                  = { fg = fg, bg = bg_alt },
     SnacksPickerBorder            = { fg = subtle, bg = bg_alt },
     SnacksPickerTitle             = { fg = bg, bg = accent, bold = true },
@@ -291,7 +285,6 @@ function M.get(p)
     SnacksPickerSpecial           = { fg = literal },
     SnacksPickerDelim             = { fg = subtle },
 
-    -- NvimTree / Neo-tree / Oil
     NvimTreeNormal             = { fg = fg, bg = bg },
     NvimTreeRootFolder         = { fg = accent, bold = true },
     NvimTreeFolderName         = { fg = fg },
@@ -312,7 +305,6 @@ function M.get(p)
     OilLink                    = { fg = literal, underline = true },
     OilSocket                  = { fg = literal },
 
-    -- Bufferline
     BufferLineFill                  = { bg = bg },
     BufferLineBackground            = { fg = muted, bg = bg },
     BufferLineBufferSelected        = { fg = fg, bg = bg, bold = true },
@@ -323,14 +315,12 @@ function M.get(p)
     BufferLineModified              = { fg = string_, bg = bg },
     BufferLineModifiedSelected      = { fg = string_, bg = bg },
 
-    -- Lualine fallback
     lualine_a_normal  = { fg = bg, bg = accent, bold = true },
     lualine_a_insert  = { fg = bg, bg = literal, bold = true },
     lualine_a_visual  = { fg = bg, bg = string_, bold = true },
     lualine_a_replace = { fg = bg, bg = err, bold = true },
     lualine_a_command = { fg = bg, bg = muted, bold = true },
 
-    -- Indent / which-key / notify
     IndentBlanklineChar        = { fg = bg_alt },
     IndentBlanklineContextChar = { fg = subtle },
     IblIndent                  = { fg = bg_alt },
@@ -349,7 +339,6 @@ function M.get(p)
     NotifyWARNIcon             = { fg = string_ },
     NotifyINFOIcon             = { fg = accent },
 
-    -- Markdown
     ["@markup.heading"]      = { fg = accent, bold = true },
     ["@markup.heading.1"]    = { fg = accent, bold = true },
     ["@markup.heading.2"]    = { fg = accent, bold = true },
