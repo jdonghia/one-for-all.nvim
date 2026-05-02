@@ -1,21 +1,23 @@
 local M = {}
 
 function M.get(p)
-  local bg      = p.eerie_black
-  local bg_alt  = p.jet
-  local fg      = p.seasalt
-  local muted   = p.cadet_gray
-  local subtle  = p.gray
-  local accent  = p.light_sea_green
-  local string_ = p.ecru
-  local literal = p.eggshell
-  local err     = p.amaranth
-  local err_dim = p.auburn
+  local bg         = p.eerie_black
+  local bg_alt     = p.jet
+  local fg         = p.seasalt
+  local muted      = p.cadet_gray
+  local subtle     = p.gray
+  local accent     = p.light_sea_green
+  local accent_dim = p.dartmouth_green
+  local type_      = p.marian_blue
+  local string_    = p.ecru
+  local literal    = p.eggshell
+  local err        = p.amaranth
+  local err_dim    = p.auburn
 
   return {
     Normal        = { fg = fg, bg = bg },
     NormalFloat   = { fg = fg, bg = bg_alt },
-    FloatBorder   = { fg = subtle, bg = bg_alt },
+    FloatBorder   = { fg = accent_dim, bg = bg_alt },
     FloatTitle    = { fg = accent, bg = bg_alt, bold = true },
     NormalNC      = { fg = fg, bg = bg },
     EndOfBuffer   = { fg = bg },
@@ -70,10 +72,10 @@ function M.get(p)
     Keyword        = { fg = accent },
     String         = { fg = string_ },
     Character      = { fg = string_ },
-    Type           = { fg = accent },
-    StorageClass   = { fg = accent },
-    Structure      = { fg = accent },
-    Typedef        = { fg = accent },
+    Type           = { fg = type_ },
+    StorageClass   = { fg = type_ },
+    Structure      = { fg = type_ },
+    Typedef        = { fg = type_ },
     Statement      = { fg = accent },
     Conditional    = { fg = accent },
     Repeat         = { fg = accent },
@@ -123,7 +125,7 @@ function M.get(p)
     ["@function.method"]     = { fg = fg },
     ["@method"]              = { fg = fg },
     ["@method.call"]         = { fg = accent },
-    ["@constructor"]         = { fg = accent },
+    ["@constructor"]         = { fg = type_ },
     ["@parameter"]           = { fg = fg },
     ["@keyword"]             = { fg = accent },
     ["@keyword.function"]    = { fg = accent },
@@ -141,13 +143,13 @@ function M.get(p)
     ["@punctuation.bracket"] = { fg = subtle },
     ["@punctuation.delimiter"] = { fg = subtle },
     ["@punctuation.special"] = { fg = literal },
-    ["@type"]                = { fg = accent },
-    ["@type.builtin"]        = { fg = accent },
-    ["@type.definition"]     = { fg = accent },
-    ["@type.qualifier"]      = { fg = accent },
-    ["@attribute"]           = { fg = accent },
-    ["@namespace"]           = { fg = accent },
-    ["@module"]              = { fg = accent },
+    ["@type"]                = { fg = type_ },
+    ["@type.builtin"]        = { fg = type_ },
+    ["@type.definition"]     = { fg = type_ },
+    ["@type.qualifier"]      = { fg = type_ },
+    ["@attribute"]           = { fg = type_ },
+    ["@namespace"]           = { fg = type_ },
+    ["@module"]              = { fg = type_ },
     ["@symbol"]              = { fg = literal },
     ["@tag"]                 = { fg = accent },
     ["@tag.attribute"]       = { fg = muted },
@@ -171,12 +173,12 @@ function M.get(p)
     ["@lsp.type.property"]   = { fg = muted },
     ["@lsp.type.function"]   = { fg = accent },
     ["@lsp.type.method"]     = { fg = accent },
-    ["@lsp.type.class"]      = { fg = accent },
-    ["@lsp.type.type"]       = { fg = accent },
-    ["@lsp.type.interface"]  = { fg = accent },
-    ["@lsp.type.enum"]       = { fg = accent },
-    ["@lsp.type.struct"]     = { fg = accent },
-    ["@lsp.type.namespace"]  = { fg = accent },
+    ["@lsp.type.class"]      = { fg = type_ },
+    ["@lsp.type.type"]       = { fg = type_ },
+    ["@lsp.type.interface"]  = { fg = type_ },
+    ["@lsp.type.enum"]       = { fg = type_ },
+    ["@lsp.type.struct"]     = { fg = type_ },
+    ["@lsp.type.namespace"]  = { fg = type_ },
     ["@lsp.type.keyword"]    = { fg = accent },
     ["@lsp.type.string"]     = { fg = string_ },
     ["@lsp.type.number"]     = { fg = literal },
@@ -195,7 +197,7 @@ function M.get(p)
     DiagnosticWarn             = { fg = string_ },
     DiagnosticInfo             = { fg = accent },
     DiagnosticHint             = { fg = muted },
-    DiagnosticOk               = { fg = accent },
+    DiagnosticOk               = { fg = accent_dim },
     DiagnosticUnderlineError   = { undercurl = true, sp = err },
     DiagnosticUnderlineWarn    = { undercurl = true, sp = string_ },
     DiagnosticUnderlineInfo    = { undercurl = true, sp = accent },
@@ -205,11 +207,11 @@ function M.get(p)
     DiagnosticVirtualTextInfo  = { fg = accent, bg = bg },
     DiagnosticVirtualTextHint  = { fg = muted, bg = bg },
 
-    DiffAdd       = { fg = accent, bg = bg_alt },
+    DiffAdd       = { fg = accent_dim, bg = bg_alt },
     DiffChange    = { fg = string_, bg = bg_alt },
     DiffDelete    = { fg = err_dim, bg = bg_alt },
     DiffText      = { fg = err, bg = bg_alt, bold = true },
-    ["@diff.plus"]  = { fg = accent },
+    ["@diff.plus"]  = { fg = accent_dim },
     ["@diff.minus"] = { fg = err },
     ["@diff.delta"] = { fg = string_ },
 
@@ -218,23 +220,23 @@ function M.get(p)
     SpellLocal = { undercurl = true, sp = string_ },
     SpellRare  = { undercurl = true, sp = literal },
 
-    GitSignsAdd      = { fg = accent },
+    GitSignsAdd      = { fg = accent_dim },
     GitSignsChange   = { fg = string_ },
     GitSignsDelete   = { fg = err },
-    GitSignsAddNr    = { fg = accent },
+    GitSignsAddNr    = { fg = accent_dim },
     GitSignsChangeNr = { fg = string_ },
     GitSignsDeleteNr = { fg = err },
-    GitGutterAdd     = { fg = accent },
+    GitGutterAdd     = { fg = accent_dim },
     GitGutterChange  = { fg = string_ },
     GitGutterDelete  = { fg = err },
-    diffAdded        = { fg = accent },
+    diffAdded        = { fg = accent_dim },
     diffRemoved      = { fg = err },
     diffChanged      = { fg = string_ },
 
     TelescopeNormal         = { fg = fg, bg = bg_alt },
-    TelescopeBorder         = { fg = subtle, bg = bg_alt },
+    TelescopeBorder         = { fg = accent_dim, bg = bg_alt },
     TelescopePromptNormal   = { fg = fg, bg = bg_alt },
-    TelescopePromptBorder   = { fg = subtle, bg = bg_alt },
+    TelescopePromptBorder   = { fg = accent_dim, bg = bg_alt },
     TelescopePromptTitle    = { fg = bg, bg = accent, bold = true },
     TelescopePreviewTitle   = { fg = bg, bg = accent, bold = true },
     TelescopeResultsTitle   = { fg = bg_alt, bg = bg_alt },
@@ -247,7 +249,7 @@ function M.get(p)
     TelescopePromptPrefix   = { fg = accent },
 
     SnacksPicker                  = { fg = fg, bg = bg_alt },
-    SnacksPickerBorder            = { fg = subtle, bg = bg_alt },
+    SnacksPickerBorder            = { fg = accent_dim, bg = bg_alt },
     SnacksPickerTitle             = { fg = bg, bg = accent, bold = true },
     SnacksPickerFooter            = { fg = muted, bg = bg_alt },
     SnacksPickerInput             = { fg = fg, bg = bg_alt },
@@ -255,14 +257,14 @@ function M.get(p)
     SnacksPickerInputTitle        = { fg = bg, bg = accent, bold = true },
     SnacksPickerInputCursorLine   = { bg = bg_alt },
     SnacksPickerList              = { fg = fg, bg = bg_alt },
-    SnacksPickerListBorder        = { fg = subtle, bg = bg_alt },
+    SnacksPickerListBorder        = { fg = accent_dim, bg = bg_alt },
     SnacksPickerListTitle         = { fg = bg, bg = accent, bold = true },
     SnacksPickerListCursorLine    = { fg = bg, bg = accent, bold = true },
     SnacksPickerCursorLine        = { fg = bg, bg = accent, bold = true },
     SnacksPickerSelected          = { fg = literal, bg = bg_alt, bold = true },
     SnacksPickerMatch             = { fg = err, bold = true },
     SnacksPickerPreview           = { fg = fg, bg = bg },
-    SnacksPickerPreviewBorder     = { fg = subtle, bg = bg },
+    SnacksPickerPreviewBorder     = { fg = accent_dim, bg = bg },
     SnacksPickerPreviewTitle      = { fg = bg, bg = accent, bold = true },
     SnacksPickerPreviewCursorLine = { bg = bg_alt },
     SnacksPickerPrompt            = { fg = accent, bg = bg_alt, bold = true },
@@ -276,7 +278,7 @@ function M.get(p)
     SnacksPickerIconDir           = { fg = accent },
     SnacksPickerIconFile          = { fg = muted },
     SnacksPickerGitStatus         = { fg = string_ },
-    SnacksPickerGitStatusAdded    = { fg = accent },
+    SnacksPickerGitStatusAdded    = { fg = accent_dim },
     SnacksPickerGitStatusModified = { fg = string_ },
     SnacksPickerGitStatusDeleted  = { fg = err },
     SnacksPickerGitStatusRenamed  = { fg = literal },
@@ -291,14 +293,14 @@ function M.get(p)
     NvimTreeFolderIcon         = { fg = accent },
     NvimTreeOpenedFolderName   = { fg = accent, bold = true },
     NvimTreeGitDirty           = { fg = string_ },
-    NvimTreeGitNew             = { fg = accent },
+    NvimTreeGitNew             = { fg = accent_dim },
     NvimTreeGitDeleted         = { fg = err },
     NeoTreeNormal              = { fg = fg, bg = bg },
     NeoTreeDirectoryName       = { fg = fg },
     NeoTreeDirectoryIcon       = { fg = accent },
     NeoTreeRootName            = { fg = accent, bold = true },
     NeoTreeGitModified         = { fg = string_ },
-    NeoTreeGitAdded            = { fg = accent },
+    NeoTreeGitAdded            = { fg = accent_dim },
     NeoTreeGitDeleted          = { fg = err },
     OilDir                     = { fg = accent },
     OilDirIcon                 = { fg = accent },

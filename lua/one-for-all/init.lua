@@ -4,19 +4,19 @@ M.palette = require("one-for-all.palette")
 
 local function set_terminal(p)
   vim.g.terminal_color_0  = p.eerie_black
-  vim.g.terminal_color_1  = p.amaranth
-  vim.g.terminal_color_2  = p.light_sea_green
+  vim.g.terminal_color_1  = p.auburn
+  vim.g.terminal_color_2  = p.dartmouth_green
   vim.g.terminal_color_3  = p.ecru
-  vim.g.terminal_color_4  = p.light_sea_green
-  vim.g.terminal_color_5  = p.auburn
+  vim.g.terminal_color_4  = p.marian_blue
+  vim.g.terminal_color_5  = p.amaranth
   vim.g.terminal_color_6  = p.light_sea_green
   vim.g.terminal_color_7  = p.seasalt
   vim.g.terminal_color_8  = p.gray
   vim.g.terminal_color_9  = p.amaranth
   vim.g.terminal_color_10 = p.light_sea_green
   vim.g.terminal_color_11 = p.eggshell
-  vim.g.terminal_color_12 = p.light_sea_green
-  vim.g.terminal_color_13 = p.auburn
+  vim.g.terminal_color_12 = p.marian_blue
+  vim.g.terminal_color_13 = p.amaranth
   vim.g.terminal_color_14 = p.light_sea_green
   vim.g.terminal_color_15 = p.eggshell
 end

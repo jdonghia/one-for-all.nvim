@@ -5,8 +5,10 @@ return {
   cadet_gray      = "#abacaf",
   gray            = "#777777",
   light_sea_green = "#40bebd",
+  dartmouth_green = "#1f7d65",
   ecru            = "#ada159",
-  eggshell        = "#f0eada",
+  eggshell        = "#f9f0de",
+  marian_blue     = "#424684",
   auburn          = "#ae2429",
   amaranth        = "#db324d",
 }
